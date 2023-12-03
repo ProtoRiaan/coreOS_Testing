@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  db:
+    image: postgres
+    container_name: local_pgdb
+    restart: unless-stopped
+    networks: 
+      - coreOS_test_net
+    environment:
+      POSTGRES_USER: riaan  
+      POSTGRES_PASSWORD: cisco!23
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: unless-stopped
+    ports:
+      - "localhost:8888:80"
+    networks: 
+      - coreOS_test_net
+    environment:
+      PGADMIN_DEFAULT_EMAIL: riaan@test.net
+      PGADMIN_DEFAULT_PASSWORD: cisco!23
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
+
