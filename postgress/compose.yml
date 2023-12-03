@@ -9,6 +9,7 @@ services:
     environment:
       POSTGRES_USER: riaan  
       POSTGRES_PASSWORD: cisco!23
+      POSTGRES_DB: Homelab_Test
     volumes:
       - local_pgdata:/var/lib/postgresql/data
   pgadmin:
@@ -16,7 +17,7 @@ services:
     container_name: pgadmin4_container
     restart: unless-stopped
     ports:
-      - "localhost:8888:80"
+      - "8888:80"
     networks: 
       - coreOS_test_net
     environment:
@@ -28,4 +29,7 @@ services:
 volumes:
   local_pgdata:
   pgadmin-data:
+
+networks:
+  coreOS_test_net:
 
