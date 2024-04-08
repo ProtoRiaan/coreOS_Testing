@@ -1,6 +1,6 @@
 {
   "ignition": {
-    "version": "3.3.0"
+    "version": "3.4.0"
   },
   "passwd": {
     "users": [
@@ -27,7 +27,9 @@
             "label": "root",
             "number": 4,
             "resize": true,
-            "sizeMiB": 8192
+            "shouldExist": true,
+            "sizeMiB": 8192,
+            "wipePartitionEntry": true
           }
         ],
         "wipeTable": false
@@ -37,8 +39,12 @@
         "partitions": [
           {
             "label": "var",
+            "number": 1,
+            "resize": true,
+            "shouldExist": true,
             "sizeMiB": 0,
-            "startMiB": 0
+            "startMiB": 0,
+            "wipePartitionEntry": false
           }
         ],
         "wipeTable": false
