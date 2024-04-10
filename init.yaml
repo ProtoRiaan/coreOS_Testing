@@ -41,15 +41,22 @@ storage:
   
 passwd:
   users:
-    - name: juliemao
-      password_hash: $y$j9T$BN4QQMeXxFLQPdJVM/vDi/$FW0FgOZquTHzOyt3xigi4iBstsm0DQBIXgVZkFg6oLD
+    - name: redacted
+      password_hash: redactedgoblygook
       groups:
         - docker
         - wheel
         - sudo
       ssh_authorized_keys:
-        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOtV3znPEtvDcbKxXHTfzTrr6bn1Azqrm4TdA+BG+H1R
-  
+        - ssh-ed25519 redactedgoblygook
+    - name: redactedgoblygook
+      groups:
+        - docker
+        - wheel
+        - sudo
+      ssh_authorized_keys:
+        - ssh-ed25519 redactedgoblygook
+
 systemd:
   units:
     # Installing Xen Guest Tools as a layered package with rpm-ostree

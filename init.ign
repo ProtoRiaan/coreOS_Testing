@@ -10,10 +10,21 @@
           "wheel",
           "sudo"
         ],
-        "name": "juliemao",
-        "passwordHash": "$y$j9T$BN4QQMeXxFLQPdJVM/vDi/$FW0FgOZquTHzOyt3xigi4iBstsm0DQBIXgVZkFg6oLD",
+        "name": "redacted",
+        "passwordHash": "redactedgoblygook",
         "sshAuthorizedKeys": [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOtV3znPEtvDcbKxXHTfzTrr6bn1Azqrm4TdA+BG+H1R"
+          "ssh-ed25519 redactedgoblygook"
+        ]
+      },
+      {
+        "groups": [
+          "docker",
+          "wheel",
+          "sudo"
+        ],
+        "name": "redactedgoblygook",
+        "sshAuthorizedKeys": [
+          "ssh-ed25519 redactedgoblygook"
         ]
       }
     ]
