@@ -46,8 +46,8 @@ passwd:
         - docker
         - wheel
         - sudo
-      ssh_authorized_keys:
-        - ssh-ed25519 redactedgoblygook
+      ssh_authorized_keys_local:
+        - users/dmiller/dmiller.pub
 
 systemd:
   units:
