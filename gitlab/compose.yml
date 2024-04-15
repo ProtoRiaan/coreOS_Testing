@@ -8,7 +8,6 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
         external_url 'https://gitlab.beltalowda.outerbelt.net'  
-        gitlab_rails['gitlab_shell_ssh_port'] = 2424  
     volumes:
       - gitlab-conf:/etc/gitlab/
       - gitlab-logs:/var/log/gitlab
@@ -17,11 +16,10 @@ services:
       - "8180:80"
       - "8143:443"
       - "8122:22"
-      - "8123:2424"
-    shm_size: '256m'
+    shm_size: '1gb'
   
 volumes:
-    - gitlab-conf
-    - gitlab-logs
-    - gitlab-data
+    gitlab-conf:
+    gitlab-logs:
+    gitlab-data:
 
