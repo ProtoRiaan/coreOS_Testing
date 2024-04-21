@@ -12,14 +12,20 @@ services:
       - gitlab-conf:/etc/gitlab/
       - gitlab-logs:/var/log/gitlab
       - gitlab-data:/var/opt/gitlab
+    networks:
+      - nginx_container_proxynet
+      - gitlab_ssh
+
     ports:
-      - "8180:80"
-      - "8143:443"
       - "8122:22"
-    shm_size: '1gb'
+    shm_size: '2gb'
   
 volumes:
     gitlab-conf:
     gitlab-logs:
     gitlab-data:
 
+networks:
+  nginx_container_proxynet:
+    external: true
+  gitlab_ssh:
