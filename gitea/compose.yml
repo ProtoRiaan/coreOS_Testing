@@ -1,0 +1,41 @@
+networks:
+  nginx_proxy_net:
+    external: true
+    driver: macvlan
+    driver_opts:
+      parent: enX0
+    ipam:
+      config:
+        - subnet: "192.168.222.0/24"
+          ip_range: "192.168.222.0/24"
+          gateway: "192.168.222.1"
+
+volumes:
+  gitea-data:
+
+services:
+  server:
+    image: gitea/gitea:latest
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=192.168.222.240:5432
+      - GITEA__database__NAME=giteadb
+      - GITEA__database__USER=gitea
+      # - GITEA__database__PASSWD=''
+
+    restart: unless-stopped
+
+    networks:
+      nginx_proxy_net:
+        ipv4_address: 192.168.222.242
+
+    volumes:
+      - gitea-data:/data
+#      - /etc/timezone:/etc/timezone:ro
+#      - /etc/localtime:/etc/localtime:ro
+    # ports:
+    #   - "3000:3000"
+    #   - "222:22"
