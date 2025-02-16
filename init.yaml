@@ -38,6 +38,15 @@ storage:
       mode: 0644
       contents:
         inline: theanubis
+    - path: /etc/docker/daemon.json
+      mode: 0600
+      contents:
+        inline: |
+          {
+            "metrics-addr": "0.0.0.0:9323",
+            "experimental": true
+          }
+        
   links:
     - path: /etc/localtime
       target: ../usr/share/zoneinfo/America/New_York        
