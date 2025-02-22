@@ -90,6 +90,28 @@ systemd:
         [Install]
         WantedBy=multi-user.target
 
+    # Install Docker CE
+    - name: rpm-ostree-install-docker-ce.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Install Docker CE
+        Wants=network-online.target
+        After=network-online.target
+        Before=zincati.service
+        ConditionPathExists=!/var/lib/%N.stamp
+
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        ExecStart=/usr/bin/curl --output-dir "/etc/yum.repos.d" --remote-name https://download.docker.com/linux/fedora/docker-ce.repo
+        ExecStart=/usr/bin/rpm-ostree override remove moby-engine containerd runc docker-cli --install docker-ce
+        ExecStart=/usr/bin/touch /var/lib/%N.stamp
+        ExecStart=/usr/bin/systemctl --no-block reboot
+
+        [Install]
+        WantedBy=multi-user.target
+
     - name: docker.service
       enabled: true
       
